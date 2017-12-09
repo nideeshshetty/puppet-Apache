@@ -42,7 +42,20 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class apache {
+#class apache {
 
+#class { 'apache::install': } ->
+#class { 'apache::service': }
 
+#}
+
+class appache (
+String $package_name = $::appache::params::package_name,
+String $service_name = $::appache::params::service_name,
+
+) inherits ::appache::params {
+class { 'appache::install': } ->
+class { 'appache::service': }
 }
+
+
